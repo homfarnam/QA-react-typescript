@@ -1,0 +1,55 @@
+name: Npm and Github package
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+          registry-url: https://registry.npmjs.org/
+
+      #       - name: Install dependencies
+      #         if: steps.cache.outputs.cache-hit != 'true'
+      #         run: npm ci
+
+      - run: git config --global user.name "Farnam"
+
+      - run: git config --global user.email "homfarnam@gmail.com"
+
+      - name: Publish to NPM
+
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
+          echo $(cat ~/.npmrc)
+           
+          npm run publish-npm
+
+        # run: |
+        #   if [ "$GIT_REF" = "refs/heads/master" ] ; then
+
+        #     npm run build
+        #     echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
+        #     npm publish --access=public
+        #   fi
+        env:
+          GIT_REF: ${{ github.ref }}
+          NODE_AUTH_TOKEN: ${{secrets.AUTH_NPM}}
