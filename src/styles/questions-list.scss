@@ -1,0 +1,35 @@
+.questionslist {
+  @apply flex flex-col justify-start items-start px-3 w-full;
+
+  &--title {
+    @apply text-xl font-bold;
+  }
+
+  &__questionBox {
+    @apply flex relative justify-between w-full;
+
+    &__main {
+      @apply flex flex-row py-3 px-3 my-3 w-full rounded-xl border;
+
+      &--question {
+        @apply w-1/2;
+      }
+
+      &--icons {
+        @apply flex gap-10 justify-end items-center w-1/2;
+
+        &--trash {
+          @apply flex justify-center items-center cursor-pointer;
+        }
+      }
+    }
+  }
+
+  &--empty {
+    @apply py-2 px-2 my-2 w-full bg-red-200 rounded-xl border;
+  }
+
+  &__buttons {
+    @apply flex gap-10 justify-start items-center mt-5 w-full;
+  }
+}

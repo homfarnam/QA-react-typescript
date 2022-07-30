@@ -1,0 +1,51 @@
+.mainform {
+  @apply flex flex-col justify-center items-center px-0 w-full;
+
+  @screen md {
+    @apply flex flex-col justify-start items-start px-3 w-full;
+  }
+
+  &--title {
+    @apply text-xl font-bold;
+  }
+
+  &--qa {
+    @apply flex flex-col mt-5 w-full;
+
+    input {
+      @apply py-3 px-3 mt-3 w-full rounded-xl border outline-none;
+
+      @screen md {
+        @apply py-3 px-3 mt-3 w-3/4 rounded-xl border outline-none;
+      }
+    }
+  }
+
+  &--check {
+    @apply flex gap-3 justify-start items-center mt-5 w-full;
+  }
+
+  &--buttons {
+    @apply flex gap-10 items-center w-full mx-auto justify-center;
+
+    @screen md {
+      @apply flex gap-10 items-center w-full;
+    }
+
+    &__add {
+      @apply my-5 bg-green-400;
+
+      @screen md {
+        @apply my-5 bg-green-400;
+      }
+    }
+
+    &__edit {
+      @apply my-5 bg-orange-600;
+
+      @screen md {
+        @apply my-5 bg-orange-600;
+      }
+    }
+  }
+}
