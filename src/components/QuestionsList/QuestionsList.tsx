@@ -37,7 +37,11 @@ const Question = ({ data, onEdit }: QuestionsProps) => {
       </div>
 
       <div className="flex gap-10 justify-end items-center w-1/2">
-        <BiEdit size={20} onClick={() => onEdit(data)} />
+        <BiEdit
+          size={20}
+          onClick={() => onEdit(data)}
+          className="cursor-pointer"
+        />
 
         <BiTrash
           size={20}
