@@ -1,16 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
-
-export interface QuestionType {
-  id: string
-  question: string
-  answer: string
-}
-
-interface State {
-  questions: QuestionType[]
-  selectedQuestion?: QuestionType
-}
+import { QuestionType, State } from "types/types"
 
 const initialState: State = {
   questions: [],
@@ -35,6 +25,12 @@ export const qaSlice = createSlice({
         selectedQuestion: questions.find(
           (question) => question.id === action.payload.id
         ),
+      }
+    },
+    removeSelectedQuestion: (state) => {
+      return {
+        ...state,
+        selectedQuestion: null,
       }
     },
     deleteQuestion: (state, action: PayloadAction<QuestionType>) => {
@@ -84,6 +80,7 @@ export const {
   clearAllQuestions,
   sortQuestions,
   selectQuestion,
+  removeSelectedQuestion,
 } = qaSlice.actions
 
 export default qaSlice.reducer
