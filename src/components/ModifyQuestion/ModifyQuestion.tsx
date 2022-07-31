@@ -1,13 +1,13 @@
-import Button from "components/Button/Button"
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+import { v4 as uuidv4 } from "uuid"
+import Button from "components/Button/Button"
 import {
   addQuestion,
   removeSelectedQuestion,
   editQuestion,
 } from "store/features/questionsSlice"
 import type { ModifyQuestionProps, QuestionType } from "types/types"
-import { v4 as uuidv4 } from "uuid"
 
 const initialState = {
   id: "",
@@ -19,7 +19,7 @@ const ModifyQuestion: React.FC<ModifyQuestionProps> = ({
   selectedQuestion,
 }) => {
   const [qaData, setQaData] = useState<QuestionType>(initialState)
-
+  const [isShown, setIsShown] = useState<boolean>(false)
   const [delay, setDelay] = useState(false)
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -69,10 +69,24 @@ const ModifyQuestion: React.FC<ModifyQuestionProps> = ({
   const resetForm = () => {
     setQaData(initialState)
     setDelay(false)
+    dispatch(removeSelectedQuestion())
   }
   return (
     <form className="mainform" onSubmit={(_e) => handleSubmitForm()}>
-      <h3 className="mainform--title">Create a new question</h3>
+      <div className="relative w-full">
+        <h3
+          className="mainform--title"
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+        >
+          Create a new question
+        </h3>
+        {isShown && (
+          <div className="tooltip">
+            <p>Here you can find create new question and their answer form</p>
+          </div>
+        )}
+      </div>
 
       <div className="mainform--qa">
         <label htmlFor="question">Question</label>

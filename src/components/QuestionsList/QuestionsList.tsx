@@ -52,6 +52,7 @@ const Question = ({ data, onEdit }: QuestionsProps) => {
 
 const QuestionsList: React.FC<QuestionsListProps> = ({ data }) => {
   const dispatch = useDispatch()
+  const [isShown, setIsShown] = useState<boolean>(false)
 
   const handleEdit = (data: QuestionType) => {
     dispatch(selectQuestion(data))
@@ -59,7 +60,20 @@ const QuestionsList: React.FC<QuestionsListProps> = ({ data }) => {
 
   return (
     <div className="questionslist">
-      <h3 className="questionslist--title">Created question</h3>
+      <div className="questionslist--title">
+        <h3
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+        >
+          Created question
+        </h3>
+
+        {isShown && (
+          <div className="tooltip">
+            <p>Here you can find the created questions and their answers</p>
+          </div>
+        )}
+      </div>
       {data.length > 0 ? (
         data?.map((question) => {
           return (
@@ -76,16 +90,14 @@ const QuestionsList: React.FC<QuestionsListProps> = ({ data }) => {
 
       <div className="questionslist__buttons">
         <Button
-          className="bg-blue-400 w-full"
+          className="w-full bg-blue-400"
           text="Sort question"
-          onClick={() => {
-            dispatch(sortQuestions())
-          }}
+          onClick={() => dispatch(sortQuestions())}
         />
 
         <Button
-          className="bg-red-400 w-full"
-          text=" Remove questions"
+          className="w-full bg-red-400"
+          text="Remove questions"
           onClick={() => dispatch(clearAllQuestions())}
         />
       </div>
