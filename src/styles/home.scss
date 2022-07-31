@@ -1,0 +1,43 @@
+.home {
+  @apply h-screen;
+
+  &__container {
+    @apply py-10 w-full h-full text-white bg-black;
+
+    @screen md {
+      @apply h-screen;
+    }
+
+    &--title {
+      @apply container flex justify-center my-5 mx-auto w-full;
+
+      h1 {
+        @apply text-2xl;
+      }
+    }
+
+    &--box {
+      @apply flex items-center mx-auto w-11/12 max-w-2xl h-auto text-black bg-white;
+
+      @screen md {
+        @apply w-1/2;
+      }
+
+      &__details {
+        @apply flex flex-col justify-center items-center py-5 px-3 mx-auto w-full h-full;
+
+        hr {
+          @apply my-5 w-full h-[3px] bg-black;
+        }
+
+        @screen md {
+          @apply px-2 w-11/12;
+        }
+      }
+    }
+  }
+}
+
+.tooltip {
+  @apply absolute left-20 z-30 p-3 w-1/2 bg-white border;
+}
