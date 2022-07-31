@@ -7,7 +7,7 @@ const App: React.FC = () => {
   const allData = useSelector((state: RootState) => state)
 
   return (
-    <body className="home">
+    <main className="home">
       <div className="home__container">
         <div className="home__container--title">
           <h1>The awesome Q/A tool</h1>
@@ -20,7 +20,7 @@ const App: React.FC = () => {
           </div>
         </div>
       </div>
-    </body>
+    </main>
   )
 }
 
