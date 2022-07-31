@@ -2,7 +2,10 @@
   @apply flex flex-col justify-start items-start px-3 w-full;
 
   &--title {
-    @apply text-xl font-bold;
+    @apply relative w-full;
+    h3 {
+      @apply text-xl font-bold;
+    }
   }
 
   &__questionBox {
@@ -30,6 +33,6 @@
   }
 
   &__buttons {
-    @apply flex gap-10 justify-start items-center mt-5 w-full;
+    @apply flex gap-10 justify-center items-center mt-5 w-full;
   }
 }

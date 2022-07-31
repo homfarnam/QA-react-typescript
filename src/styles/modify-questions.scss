@@ -29,7 +29,7 @@
     @apply flex gap-10 items-center w-full mx-auto justify-center;
 
     @screen md {
-      @apply flex gap-10 items-center w-full;
+      @apply flex gap-10 justify-center items-center w-full;
     }
 
     &__add {
