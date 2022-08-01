@@ -41,6 +41,7 @@ yarn start
 - ✅ Programming Language: **JavaScript**
 - ✅ Typecheck: **Typescript**
 - ✅ Dom Manipulation: **React**
+- ✅ State manager: **Redux Toolkit**
 - ✅ Css Library: **[Tailwind Css](https://tailwindcss.com/)**
 - ✅ Styling: **SCSS**
 - ✅ Code Quality: **ESLint, Prettier**
