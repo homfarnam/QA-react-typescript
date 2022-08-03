@@ -14,7 +14,7 @@ import type {
   QuestionType,
 } from "types/types"
 
-const Question = ({ data, onEdit }: QuestionsProps) => {
+const Question = ({ data, onEdit, selectedQuestion }: QuestionsProps) => {
   const [visible, setVisible] = useState<boolean>(false)
   const dispatch = useDispatch()
 
@@ -24,7 +24,11 @@ const Question = ({ data, onEdit }: QuestionsProps) => {
 
   return (
     <div className="questionslist__questionBox">
-      <div className="questionslist__questionBox__main">
+      <div
+        className={`questionslist__questionBox__main ${
+          selectedQuestion?.id === data.id && "edited"
+        }`}
+      >
         <div className="questionslist__questionBox__main--question">
           <p onClick={makeVisible} className="cursor-pointer">
             {data.question}
@@ -50,7 +54,7 @@ const Question = ({ data, onEdit }: QuestionsProps) => {
   )
 }
 
-const QuestionsList: React.FC<QuestionsListProps> = ({ data }) => {
+const QuestionsList: React.FC<QuestionsListProps> = ({ data, selected }) => {
   const dispatch = useDispatch()
   const [isShown, setIsShown] = useState<boolean>(false)
 
@@ -78,7 +82,11 @@ const QuestionsList: React.FC<QuestionsListProps> = ({ data }) => {
         data?.map((question) => {
           return (
             <React.Fragment key={question.id}>
-              <Question data={question} onEdit={handleEdit} />
+              <Question
+                data={question}
+                onEdit={handleEdit}
+                selectedQuestion={selected}
+              />
             </React.Fragment>
           )
         })

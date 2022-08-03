@@ -36,3 +36,7 @@
     @apply flex gap-10 justify-center items-center mt-5 w-full;
   }
 }
+
+.edited {
+  @apply bg-green-200;
+}
