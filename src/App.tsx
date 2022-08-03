@@ -14,7 +14,10 @@ const App: React.FC = () => {
         </div>
         <div className="home__container--box">
           <div className="home__container--box__details">
-            <QuestionsList data={allData.questions} />
+            <QuestionsList
+              data={allData.questions}
+              selected={allData.selectedQuestion}
+            />
             <hr />
             <ModifyQuestion selectedQuestion={allData.selectedQuestion} />
           </div>
