@@ -118,13 +118,13 @@ const ModifyQuestion: React.FC<ModifyQuestionProps> = ({
       </div>
 
       <div className="mainform--check">
-        <label htmlFor="delay">Delay</label>
         <input
           type="checkbox"
           name="delay"
           onChange={(e) => setDelay(e.target.checked)}
           checked={delay}
         />
+        <label htmlFor="delay">Delay</label>
       </div>
 
       <div className="mainform--buttons">
