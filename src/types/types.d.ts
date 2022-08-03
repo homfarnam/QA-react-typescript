@@ -1,10 +1,12 @@
 interface QuestionsProps {
   data: QuestionType
   onEdit: (data: QuestionType) => void
+  selectedQuestion: QuestionType
 }
 
 interface QuestionsListProps {
   data: QuestionType[]
+  selected: QuestionType
 }
 
 interface QuestionType {
